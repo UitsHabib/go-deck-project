@@ -8,6 +8,14 @@
                 <p>I am Habib</p>
 
                 <p> This came from template: {{index .Stringmap "test"}} </p>
+
+                <p> 
+                    {{if ne (index .Stringmap "remote_ip") ""}}
+                        Your remote IP address is {{index .Stringmap "remote_ip"}}
+                    {{else}}
+                        I don't know your ip address yet. Visit the <a href="/"> Home Page </a> so I can set it.
+                    {{end}}
+                </p>
             </div>
         </div>
     </div>
