@@ -1,0 +1,14 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1> This is about page </h1>
+                <p>I am Habib</p>
+
+                <p> This came from template: {{index .Stringmap "test"}} </p>
+            </div>
+        </div>
+    </div>
+{{end}}
