@@ -47,9 +47,27 @@ func NewUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteUser(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Delete user endpoint hit")
+	vars := mux.Vars(r)
+	name := vars["name"]
+
+	var user User
+	db.Where("name = ?", name).Find(&user)
+
+	db.Delete(&user)
+
+	fmt.Fprintf(w, "User deleted successfully")
 }
 
 func UpdateUser(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Update user endpoint hit")
+	vars := mux.Vars(r)
+	name := vars["name"]
+	email := vars["email"]
+
+	var user User
+	db.Where("name = ?", name).Find(&user)
+	user.Email = email
+
+	db.Save(&user)
+
+	fmt.Fprintf(w, "User updated successfully")
 }
